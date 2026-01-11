@@ -5,7 +5,8 @@ jobs:
     checkout-and-list:
         runs-on: ubuntu-latest
         steps:
-
+            - name: Checkout code
+              uses: actions/checkout@v2
             - name: commit and push
               run: |
                 git add requirements.txt
