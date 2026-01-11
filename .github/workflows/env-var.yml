@@ -1,6 +1,6 @@
 name: Environment-Variables
 on: [push, pull_request]
-run-name: "env var action by : ${{ github.action }} - event by ${{ github.event_name }}"
+# run-name: "env var action by : ${{ github.action }} - event by ${{ github.event_name }}"
 env:
     WF_ENV_VAR: "this env var is available to all jobs of this workflow"
 jobs: 
@@ -19,3 +19,10 @@ jobs:
                 echo "${{ GITHUB.REPOSITORY }}"
               env:
                 STEP-LEVEL-ENV: "this env only available for this specific step"
+                WF_ENV_VAR: "this workflow env var is overridden at step level"
+            - name: display-all-env
+              run: |
+                echo ${{ env.WF_ENV_VAR }}
+                echo ${{ env['JOB-LEVEL-ENV'] }}
+                echo ${{ env['STEP-LEVEL-ENV'] }}
+                echo $GITHUB_ENV
