@@ -8,9 +8,9 @@ jobs:
         steps:
             - name: env-evaluated-on-runner
               run: |
-                echo $GITHUB.REF_NAME
+                echo $GITHUB_REF
                 echo $GITHUB.REPOSITORY
-            - name: env-already-evaluated
+            - name: env-already-evaluated-context
               run: |
                 echo "${{ GITHUB.REF_NAME }}"
                 echo "${{ GITHUB.REPOSITORY }}"
