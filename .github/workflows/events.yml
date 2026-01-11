@@ -7,13 +7,13 @@ jobs:
         steps:
             - name: Checkout code
               uses: actions/checkout@v2
-            # - name: commit and push
-            #   run: |
-            #     git add requirements.txt
-            #     git commit -m "Adding requirements.txt"
-            #     git push origin main
-            # - name: Checkout code
-            #   uses: actions/checkout@v2
+            - name: commit and push
+              run: |
+                git add requirements.txt
+                git commit -m "Adding requirements.txt"
+                git push origin main
+            - name: Checkout code
+              uses: actions/checkout@v2
             - name: install required lib
               run: |
                 sudo apt-get update
