@@ -10,8 +10,8 @@ jobs:
             - name: expressions
               id: expr
               run: |
-                echo ${{ 1+10 }}
-                echo ${{ 10+20 }}
+                echo ${{ true && false || true }}
+                echo ${{ 'This is a expression' }}
             - name: dump-context
               run: |
                 echo "${{ toJson(github) }}"
