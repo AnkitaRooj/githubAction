@@ -1,0 +1,18 @@
+name: Learning-Expression
+on: [push]
+
+jobs:
+    using-exp-and-context:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout-code
+              uses: actions/checkout@v2
+            - name: expressions
+              id: expr
+              run: |
+                echo ${{ 1+10 }}
+                echo ${{ 10+20 }}
+            - name: dump-context
+              run: |
+                echo "${{ toJson(github) }}"
+                echo "${{ toJson(env) }}"
