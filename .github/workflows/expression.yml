@@ -1,6 +1,6 @@
 name: Learning-Expression
 on: [push]
-
+run-name: "expr action by ${{ github.actor }} event : ${{ github.event_name}}"
 jobs:
     using-exp-and-context:
         runs-on: ubuntu-latest
