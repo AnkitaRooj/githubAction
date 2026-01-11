@@ -22,7 +22,7 @@ jobs:
         # next we define the steps
         steps:
             - name: view software version # each step has a step name
-              run: run sw_vers
+              run: sw_vers
     
     dependent-job-windows:
         runs-on: windows-latest # each job has a VM type to run on . here we are saying to run the job on ubuntu-latest machine
