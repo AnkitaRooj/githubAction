@@ -1,10 +1,13 @@
 name: Environment-Variables
-on: [push]
+on: [push, pull_request]
 run-name: "env var action by : ${{ github.action }} - event by ${{ github.event_name }}"
-
+env:
+    WF_ENV_VAR: "this env var is available to all jobs of this workflow"
 jobs: 
     using-env-vars:
         runs-on: ubuntu-latest
+        env:
+            JOB-LEVEL-ENV: "this env only available for this specific job"
         steps:
             - name: env-evaluated-on-runner
               run: |
@@ -14,3 +17,5 @@ jobs:
               run: |
                 echo "${{ GITHUB.REF_NAME }}"
                 echo "${{ GITHUB.REPOSITORY }}"
+              env:
+                STEP-LEVEL-ENV: "this env only available for this specific step"
