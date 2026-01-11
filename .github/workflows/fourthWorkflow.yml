@@ -13,3 +13,14 @@ jobs:
                 git checkout main
             - name: List files in repository
               run: ls -a
+
+            - name: checkout
+              uses: actions/checkout@v2
+            
+            - name: Simple js
+              id: greet
+              uses: actions/hello-world-javascript-action@v1
+              with:
+                who-to-greet: 'Ankita the Data Analyst'
+            - name: greet output
+              run: echo "${{ steps.greet.outputs.time}}"
