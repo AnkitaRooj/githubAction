@@ -1,0 +1,17 @@
+name: "First Workflow"
+on: [push, pull_request]
+
+# each workflow can have 1 or more jobs 
+#  each job will have a name or id
+jobs:
+    run-shell-commands:
+        runs-on: ubuntu-latest # each job has a VM type to run on . here we are saying to run the job on ubuntu-latest machine
+        # next we define the steps
+        steps:
+            - name: echo a string to console # each step has a step name
+              run: echo "hello! this is my 1st workflow on github actions"
+            - name: multi line commands
+              run: |
+                node -v
+                npm -v
+
