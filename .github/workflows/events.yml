@@ -1,0 +1,21 @@
+name: Repository Events
+on: [push, pull_request, issues]
+
+jobs:
+    checkout-and-list:
+        runs-on: ubuntu-latest
+        steps:
+
+            - name: commit and push
+              run: |
+                git add requirements.txt
+                git commit -m "Adding requirements.txt"
+                git push origin main
+            - name: Checkout code
+              uses: actions/checkout@v2
+            - name: install required lib
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y python3 python3-pip
+                pip3 install -r requirements.txt
+            

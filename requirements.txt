@@ -4,3 +4,9 @@ matplotlib
 seaborn
 scikit-learn
 ipykernel
+plotly
+requests
+flask
+streamlit
+pytest
+beautifulsoup4
