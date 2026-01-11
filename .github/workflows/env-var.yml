@@ -20,9 +20,18 @@ jobs:
               env:
                 STEP-LEVEL-ENV: "this env only available for this specific step"
                 WF_ENV_VAR: "this workflow env var is overridden at step level"
+            
+
+            - name: set-env
+              run: |
+                echo "NEW_ENV_VAR=$(date)" >> $GITHUB_ENV
+                echo "JOB_LEVEL_ENV=$RANDOM" >> $GITHUB_ENV
+
             - name: display-all-env
               run: |
-                echo ${{ env.WF_ENV_VAR }}
-                echo ${{ env['JOB-LEVEL-ENV'] }}
-                echo ${{ env['STEP-LEVEL-ENV'] }}
-                echo $GITHUB_ENV
+                echo "workflow env var:" ${{ env.WF_ENV_VAR }}
+                echo "job env var:" ${{ env['JOB-LEVEL-ENV'] }}
+                echo "step env var:" ${{ env['STEP-LEVEL-ENV'] }}
+                echo "github env:" $GITHUB_ENV
+                echo "newly set env var:" ${{ env.NEW_ENV_VAR }}
+                echo "newly set job env var:" ${{ env.JOB_LEVEL_ENV }}
