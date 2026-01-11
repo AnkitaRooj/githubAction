@@ -1,0 +1,16 @@
+name: Environment-Variables
+on: [push]
+run-name: "env var action by : ${{ github.action }} - event by ${{ github.event_name }}"
+
+jobs: 
+    using-env-vars:
+        runs-on: ubuntu-latest
+        steps:
+            - name: env-evaluated-on-runner
+              run: |
+                echo $GITHUB.REF_NAME
+                echo $GITHUB.REPOSITORY
+            - name: env-already-evaluated
+              run: |
+                echo "${{ GITHUB.REF_NAME }}"
+                echo "${{ GITHUB.REPOSITORY }}"
