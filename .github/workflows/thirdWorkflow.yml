@@ -1,0 +1,11 @@
+name: Working dirs and files
+on: [push, pull_request]
+
+jobs:
+    display-wd-and-files:
+        runs-on: ubuntu-latest
+        steps:
+            - name: display wd and files
+              run: |
+                pwd
+                ls -la
