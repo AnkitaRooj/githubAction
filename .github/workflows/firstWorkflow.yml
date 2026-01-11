@@ -14,4 +14,5 @@ jobs:
               run: |
                 node -v
                 npm -v
-
+            - name: make a directory
+              run: mkdir my-directory
