@@ -16,3 +16,20 @@ jobs:
                 npm -v
             - name: make a directory
               run: mkdir my-directory
+
+    parallel-job-macos:
+        runs-on: macos-latest # each job has a VM type to run on . here we are saying to run the job on ubuntu-latest machine
+        # next we define the steps
+        steps:
+            - name: view software version # each step has a step name
+              run: run sw_vers
+    
+    dependent-job-windows:
+        runs-on: windows-latest # each job has a VM type to run on . here we are saying to run the job on ubuntu-latest machine
+        # next we define the steps
+        needs: [run-shell-commands,parallel-job-macos]
+        steps:
+            - name: echo a string to console # each step has a step name
+              run: Write-Output "this is a dependent job running on Windows"
+            - name: view software version # each step has a step name
+              run: systeminfo | findstr /B /C:"OS Name" /C:"OS Version"
