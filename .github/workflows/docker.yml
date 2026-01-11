@@ -1,0 +1,21 @@
+name: Docker
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+    docker-job:
+        runs-on: ubuntu-latest
+        container:
+            image: node:25-alpine3.22
+            # credentials:
+            env:
+                NODE_ENV: production
+            ports:
+                - 3000:3000
+            # options: --cpus 2
+        steps:
+            - name: log node & os version
+              run: |
+                node --version
+                cat /etc/os-release
+            - name: display env
+              run: echo $NODE_ENV
